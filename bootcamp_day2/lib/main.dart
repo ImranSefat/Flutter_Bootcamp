@@ -20,6 +20,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String input = "Input";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
               top: 10,
             ),
             child: Text(
-              "Input",
+              input,
               style: TextStyle(
                 fontSize: 28,
               ),
@@ -66,6 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+          // buttons starts from here
+
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -75,7 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("7");
+                    },
                     child: Text(
                       "7",
                       style: TextStyle(
@@ -88,7 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("8");
+                    },
                     child: Text(
                       "8",
                       style: TextStyle(
@@ -101,7 +109,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("9");
+                    },
                     child: Text(
                       "9",
                       style: TextStyle(
@@ -114,7 +124,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("+");
+                    },
                     child: Text(
                       "+",
                       style: TextStyle(
@@ -135,7 +147,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("4");
+                    },
                     child: Text(
                       "4",
                       style: TextStyle(
@@ -148,7 +162,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("5");
+                    },
                     child: Text(
                       "5",
                       style: TextStyle(
@@ -161,7 +177,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("6");
+                    },
                     child: Text(
                       "6",
                       style: TextStyle(
@@ -174,7 +192,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("-");
+                    },
                     child: Text(
                       "-",
                       style: TextStyle(
@@ -195,7 +215,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("1");
+                    },
                     child: Text(
                       "1",
                       style: TextStyle(
@@ -208,7 +230,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("2");
+                    },
                     child: Text(
                       "2",
                       style: TextStyle(
@@ -221,7 +245,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("3");
+                    },
                     child: Text(
                       "3",
                       style: TextStyle(
@@ -234,7 +260,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("*");
+                    },
                     child: Text(
                       "*",
                       style: TextStyle(
@@ -255,7 +283,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData(".");
+                    },
                     child: Text(
                       ".",
                       style: TextStyle(
@@ -268,7 +298,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("0");
+                    },
                     child: Text(
                       "0",
                       style: TextStyle(
@@ -281,7 +313,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        input = "Input";
+                      });
+                      // showData("C");
+                    },
                     child: Text(
                       "C",
                       style: TextStyle(
@@ -294,7 +331,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 80,
                   child: FlatButton(
                     color: Colors.amber,
-                    onPressed: () {},
+                    onPressed: () {
+                      showData("/");
+                    },
                     child: Text(
                       "/",
                       style: TextStyle(
@@ -309,5 +348,16 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
+  }
+
+  showData(String s) {
+    setState(() {
+      if (input == "Input") {
+        input = s;
+      } else {
+        input += s;
+      }
+    });
+    print(s);
   }
 }
