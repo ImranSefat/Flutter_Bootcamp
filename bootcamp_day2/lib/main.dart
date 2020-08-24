@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,13 +22,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String input = "Input";
-
+  String result = "Result";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print("Floating button pressed");
+          calculate();
+          // print("Floating button pressed");
         },
         child: Text(
           "=",
@@ -55,19 +57,21 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              right: 10.0,
-              top: 10,
-              bottom: 20,
-            ),
-            child: Text(
-              "Result",
-              style: TextStyle(
-                fontSize: 28,
-              ),
-            ),
-          ),
+          result == "Result"
+              ? Container()
+              : Padding(
+                  padding: const EdgeInsets.only(
+                    right: 10.0,
+                    top: 10,
+                    bottom: 20,
+                  ),
+                  child: Text(
+                    result,
+                    style: TextStyle(
+                      fontSize: 28,
+                    ),
+                  ),
+                ),
           // buttons starts from here
 
           Padding(
@@ -80,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("7");
+                      addToInput("7");
                     },
                     child: Text(
                       "7",
@@ -95,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("8");
+                      addToInput("8");
                     },
                     child: Text(
                       "8",
@@ -110,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("9");
+                      addToInput("9");
                     },
                     child: Text(
                       "9",
@@ -125,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("+");
+                      addToInput("+");
                     },
                     child: Text(
                       "+",
@@ -148,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("4");
+                      addToInput("4");
                     },
                     child: Text(
                       "4",
@@ -163,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("5");
+                      addToInput("5");
                     },
                     child: Text(
                       "5",
@@ -178,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("6");
+                      addToInput("6");
                     },
                     child: Text(
                       "6",
@@ -193,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("-");
+                      addToInput("-");
                     },
                     child: Text(
                       "-",
@@ -216,7 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("1");
+                      addToInput("1");
                     },
                     child: Text(
                       "1",
@@ -231,7 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("2");
+                      addToInput("2");
                     },
                     child: Text(
                       "2",
@@ -246,7 +250,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("3");
+                      addToInput("3");
                     },
                     child: Text(
                       "3",
@@ -261,7 +265,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("*");
+                      addToInput("*");
                     },
                     child: Text(
                       "*",
@@ -284,7 +288,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData(".");
+                      addToInput(".");
                     },
                     child: Text(
                       ".",
@@ -299,7 +303,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("0");
+                      addToInput("0");
                     },
                     child: Text(
                       "0",
@@ -316,8 +320,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       setState(() {
                         input = "Input";
+                        // result = "Result";
                       });
-                      // showData("C");
+                      // addToInput("C");
                     },
                     child: Text(
                       "C",
@@ -332,7 +337,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FlatButton(
                     color: Colors.amber,
                     onPressed: () {
-                      showData("/");
+                      addToInput("/");
                     },
                     child: Text(
                       "/",
@@ -350,7 +355,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  showData(String s) {
+  addToInput(String s) {
     setState(() {
       if (input == "Input") {
         input = s;
@@ -358,6 +363,20 @@ class _MyHomePageState extends State<MyHomePage> {
         input += s;
       }
     });
-    print(s);
+    // print(s);
+  }
+
+  calculate() {
+    try {
+      Parser p = Parser();
+      Expression expression = p.parse(input);
+      ContextModel cm = ContextModel();
+      setState(() {
+        double d = expression.evaluate(EvaluationType.REAL, cm);
+        result = d.toString();
+      });
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }
